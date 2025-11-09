@@ -1,1 +1,97 @@
-<!-- relation placeholder -->
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>タイプ相性｜Affinia</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Affiniaタイプ同士の相性をチェックするページです。あなたと相手のAffiniaタイプを選ぶと、相性のヒントが表示されるようになります。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header class="site-header">
+    <div class="inner header-inner">
+      <a href="index.html" class="logo">Affinia</a>
+      <nav class="nav pc-nav" aria-label="メインメニュー">
+        <a href="index.html#quiz-section">診断</a>
+        <a href="types.html">Affiniaタイプ一覧</a>
+        <a href="relation.html">タイプ相性</a>
+        <a href="affinia.html">Affiniaとは</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" type="button">
+        ☰
+      </button>
+    </div>
+  </header>
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <button class="nav-close" id="navClose" type="button" aria-label="メニューを閉じる">×</button>
+    <nav aria-label="メインメニュー(モバイル)">
+      <a href="index.html#quiz-section">診断</a>
+      <a href="types.html">Affiniaタイプ一覧</a>
+      <a href="relation.html">タイプ相性</a>
+      <a href="affinia.html">Affiniaとは</a>
+    </nav>
+  </div>
+  <div class="nav-scrim" id="navScrim"></div>
+
+  <main class="site-main">
+    <section class="relation-section">
+      <div class="inner">
+        <div class="card">
+          <h1 class="section-title">Affiniaタイプ相性</h1>
+          <p class="section-lead">
+            あなたと相手のAffiniaタイプを選ぶと、ふたりの相性のヒントが表示されるようになります。
+          </p>
+
+          <form class="relation-form" id="relationForm">
+            <div class="field">
+              <label for="meType">あなたのAffiniaタイプ</label>
+              <select id="meType" name="meType">
+                <!-- JSで選択肢を追加 -->
+              </select>
+            </div>
+            <div class="field">
+              <label for="otherType">相手のAffiniaタイプ</label>
+              <select id="otherType" name="otherType">
+                <!-- JSで選択肢を追加 -->
+              </select>
+            </div>
+            <div class="relation-actions">
+              <button type="submit" class="btn primary">相性を見る</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card" id="relationResult">
+          <!-- JSと後日追加のJSONで中身を描画 -->
+        </div>
+
+        <!-- 広告枠 -->
+        <section class="ad-slot">
+          <p>ここに広告が入ります。</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="inner footer-inner">
+      <div class="footer-brand">Affinia</div>
+      <div class="footer-links">
+        <a href="affinia.html">Affiniaとは</a>
+        <a href="types.html">Affiniaタイプ一覧</a>
+        <a href="relation.html">タイプ相性</a>
+        <a href="#">利用規約（準備中）</a>
+        <a href="#">プライバシー（準備中）</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Affinia</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
