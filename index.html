@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Affinia｜AIタイプ診断</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="性格にとらわれず、自分らしい今を知るAffiniaタイプ診断。平均1分、5段階タップ式で16のAffiniaタイプから近い傾向を表示します。" />
+  <meta name="description" content="性格にとらわれず、自分らしい今を知るAffiniaタイプ診断。たった1分で、16のAffiniaタイプから今のあなたに近い傾向を表示します。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet" />
@@ -26,6 +26,8 @@
       </button>
     </div>
   </header>
+
+  <!-- モバイルメニュー -->
   <div class="nav-drawer" id="navDrawer" aria-hidden="true">
     <button class="nav-close" id="navClose" type="button" aria-label="メニューを閉じる">×</button>
     <nav aria-label="メインメニュー(モバイル)">
@@ -45,7 +47,7 @@
           <p class="kicker">AIタイプ診断</p>
           <h1>性格にとらわれず、<br />自分らしい今を。</h1>
           <p class="hero-lead">
-            平均1分、5段階タップ式で、16のAffiniaタイプから今のあなたに近い傾向を表示します。
+            たった1分で、16のAffiniaタイプから今のあなたに近い傾向を表示します。
           </p>
           <div class="hero-actions">
             <a href="#quiz-section" class="btn primary">診断をはじめる</a>
@@ -71,7 +73,7 @@
               </div>
               <span class="progress-text"><span id="quizPercent">0</span>% 完了</span>
             </div>
-            <p class="quiz-meta">平均1分・5段階タップ式です。</p>
+            <p class="quiz-meta">たった1分で完了します。</p>
           </header>
 
           <div class="quiz-body">
@@ -79,9 +81,7 @@
 
             <div class="quiz-scale">
               <span class="quiz-label" id="quizLeftLabel"></span>
-              <div class="quiz-bubbles" id="quizChoices" role="radiogroup" aria-label="5段階の選択">
-                <!-- JSで挿入 -->
-              </div>
+              <div class="quiz-bubbles" id="quizChoices" role="radiogroup" aria-label="5段階の選択"></div>
               <span class="quiz-label" id="quizRightLabel"></span>
             </div>
 
