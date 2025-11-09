@@ -2,21 +2,20 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>Affinia｜AIタイプ診断</title>
+  <title>Affiniaとは｜Affinia</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="性格にとらわれず、自分らしい今を知るAffiniaタイプ診断。平均1分、5段階タップ式で16のAffiniaタイプから近い傾向を表示します。" />
+  <meta name="description" content="Affiniaは、性格にとらわれず今の自分を知るためのAIタイプ診断サービスです。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- ヘッダー -->
   <header class="site-header">
     <div class="inner header-inner">
       <a href="index.html" class="logo">Affinia</a>
       <nav class="nav pc-nav" aria-label="メインメニュー">
-        <a href="#quiz-section">診断</a>
+        <a href="index.html#quiz-section">診断</a>
         <a href="types.html">Affiniaタイプ一覧</a>
         <a href="relation.html">タイプ相性</a>
         <a href="affinia.html">Affiniaとは</a>
@@ -38,64 +37,46 @@
   <div class="nav-scrim" id="navScrim"></div>
 
   <main class="site-main">
-    <!-- ヒーロー -->
-    <section class="hero">
-      <div class="inner hero-inner">
-        <div class="hero-text">
-          <p class="kicker">AIタイプ診断</p>
-          <h1>性格にとらわれず、<br />自分らしい今を。</h1>
-          <p class="hero-lead">
-            平均1分、5段階タップ式で、16のAffiniaタイプから今のあなたに近い傾向を表示します。
-          </p>
-          <div class="hero-actions">
-            <a href="#quiz-section" class="btn primary">診断をはじめる</a>
-            <a href="affinia.html" class="btn ghost">Affiniaとは</a>
-          </div>
-          <ul class="hero-points">
-            <li>ブラウザだけで完結。登録不要。</li>
-            <li>その場で「今の自分のモード」がわかる。</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 診断セクション -->
-    <section id="quiz-section" class="quiz-section">
+    <section class="about-section">
       <div class="inner">
-        <div class="card quiz-card" id="quizRoot">
-          <header class="quiz-header">
-            <p class="quiz-title">Affiniaタイプ診断</p>
-            <div class="quiz-progress-row">
-              <div class="progress">
-                <div class="progress-bar" id="quizBar"></div>
-              </div>
-              <span class="progress-text"><span id="quizPercent">0</span>% 完了</span>
-            </div>
-            <p class="quiz-meta">平均1分・5段階タップ式です。</p>
-          </header>
+        <h1 class="section-title">Affiniaとは</h1>
+        <div class="card">
+          <p>
+            Affiniaは、「性格にとらわれず、自分らしい今を知る」ためのAIタイプ診断サービスです。
+            いまの生活リズムや考え方のクセを、16のAffiniaタイプとしてシンプルに見える化します。
+          </p>
+        </div>
 
-          <div class="quiz-body">
-            <h2 class="quiz-question" id="quizQuestion"></h2>
-
-            <div class="quiz-scale">
-              <span class="quiz-label" id="quizLeftLabel"></span>
-              <div class="quiz-bubbles" id="quizChoices" role="radiogroup" aria-label="5段階の選択">
-                <!-- JSで挿入 -->
-              </div>
-              <span class="quiz-label" id="quizRightLabel"></span>
-            </div>
-
-            <div class="quiz-nav">
-              <button type="button" class="btn ghost" id="quizPrev">戻る</button>
-              <button type="button" class="btn primary" id="quizNext">次へ</button>
-            </div>
+        <div class="grid-2">
+          <div class="card">
+            <h2 class="sub-title">Affiniaが大事にしていること</h2>
+            <ul class="plain-list">
+              <li>固定の性格ラベルではなく「いまのモード」を見ること。</li>
+              <li>中高生でもわかる、やわらかい言葉で伝えること。</li>
+              <li>診断後に、明日からの一歩がはっきりすること。</li>
+            </ul>
           </div>
+          <div class="card">
+            <h2 class="sub-title">Affiniaの使い方</h2>
+            <ol class="plain-list">
+              <li>トップページの「診断をはじめる」をタップ。</li>
+              <li>5段階の丸をタップして、直感で選んでいく。</li>
+              <li>結果ページでAffiniaタイプと相性のサマリを確認。</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="sub-title">つくり手からのメッセージ</h2>
+          <p>
+            Affiniaの結果は、「あなたはこういう人です」と決めつけるためのものではありません。
+            そのときどきの状態を映す鏡として、気楽に使ってもらえるとうれしいです。
+          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- フッター -->
   <footer class="site-footer">
     <div class="inner footer-inner">
       <div class="footer-brand">Affinia</div>
