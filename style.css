@@ -302,30 +302,35 @@ body {
 
 /* ★ 5段階バブル＆ラベルレイアウト
    上段：丸を横幅いっぱい
-   下段：左右にラベル
+   下段：左右にラベル（2〜3行許容）
 */
 .quiz-scale {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr;
-  row-gap: 10px;
+  row-gap: 12px;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
 }
 
-/* バブルは1行目・カード幅いっぱい */
+/* 丸：1行目でカード幅いっぱい */
 .quiz-bubbles {
   grid-row: 1;
   grid-column: 1 / 3;
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 14px;
   width: 100%;
 }
 
-/* ラベルは2行目で左右に配置 */
+/* ラベル：2行目で左右に配置。2〜3行まで許容 */
 .quiz-label {
   font-size: 13px;
   color: var(--text-sub);
   line-height: 1.5;
+  max-width: 120px;
+  word-break: keep-all;
 }
 .quiz-label:first-child {
   grid-row: 2;
@@ -359,7 +364,7 @@ body {
   background: transparent;
 }
 
-/* ★両端大きく・中央小さく★ */
+/* 両端大きく・中央小さく */
 .quiz-bubble.level-3 { transform: scale(0.90); }
 .quiz-bubble.level-2,
 .quiz-bubble.level-4 { transform: scale(1.00); }
