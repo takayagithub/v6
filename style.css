@@ -302,7 +302,7 @@ body {
 
 /* ★ 5段階バブル＆ラベルレイアウト
    上段：丸を横幅いっぱい
-   下段：左右にラベル（2〜3行許容）
+   下段：左右にラベル（2〜3行許容・はみ出し防止）
 */
 .quiz-scale {
   display: grid;
@@ -310,7 +310,7 @@ body {
   grid-template-columns: 1fr 1fr;
   row-gap: 12px;
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;   /* 少し狭めてカード内に収める */
   margin: 0 auto;
 }
 
@@ -320,17 +320,18 @@ body {
   grid-column: 1 / 3;
   display: flex;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
 }
 
-/* ラベル：2行目で左右に配置。2〜3行まで許容 */
+/* ラベル：2行目で左右に配置。内側に少し余白を持たせる */
 .quiz-label {
   font-size: 13px;
   color: var(--text-sub);
   line-height: 1.5;
   max-width: 120px;
-  word-break: keep-all;
+  padding: 0 4px;         /* カード端から少し内側に寄せる */
+  word-break: normal;     /* 日本語を自然に改行 */
 }
 .quiz-label:first-child {
   grid-row: 2;
