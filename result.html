@@ -1,86 +1,151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <title>診断結果｜Affinia</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Affiniaタイプ診断の結果ページです。あなたのAffiniaタイプとAffiniaコード、今のモードや相性の傾向を表示します。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affinia - 診断結果</title>
+
+    <!-- OGタグ -->
+    <meta property="og:title" content="Affinia - 診断結果">
+    <meta property="og:description" content="今日のあなたに近い Affinia タイプをチェック！">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/img/og-image.png">
+    <meta property="og:url" content="https://affinia.pages.dev/result">
+
+    <!-- 共有 -->
+    <script src="type-images.js"></script>
+    <script src="types.json"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- 共通ヘッダー -->
-  <header class="site-header">
-    <div class="inner header-inner">
-      <a href="index.html" class="logo">Affinia</a>
-      <nav class="nav pc-nav" aria-label="メインメニュー">
-        <a href="index.html#quiz-section">診断</a>
-        <a href="types.html">Affiniaタイプ一覧</a>
-        <a href="relation.html">タイプ相性</a>
-        <a href="affinia.html">Affiniaとは</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" type="button">
-        ☰
-      </button>
-    </div>
-  </header>
-  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
-    <button class="nav-close" id="navClose" type="button" aria-label="メニューを閉じる">×</button>
-    <nav aria-label="メインメニュー(モバイル)">
-      <a href="index.html#quiz-section">診断</a>
-      <a href="types.html">Affiniaタイプ一覧</a>
-      <a href="relation.html">タイプ相性</a>
-      <a href="affinia.html">Affiniaとは</a>
-    </nav>
-  </div>
-  <div class="nav-scrim" id="navScrim"></div>
 
-  <main class="site-main">
-    <section class="result-section">
-      <div class="inner">
-        <div class="card result-card" id="resultRoot">
-          <!-- JSで中身を描画 -->
-        </div>
+<header class="header">
+    <div class="logo">Affinia</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
 
-        <!-- シェアセクション -->
-        <section class="share-section">
-          <p class="share-label">この結果をシェアする</p>
-          <div class="share-icons">
-            <a href="#" id="shareX" class="share-icon icon-x" aria-label="Xでシェア" target="_blank" rel="noopener"></a>
-            <a href="#" id="shareLine" class="share-icon icon-line" aria-label="LINEで送る" target="_blank" rel="noopener"></a>
-            <a href="#" id="shareInsta" class="share-icon icon-instagram" aria-label="Instagramを開く" target="_blank" rel="noopener"></a>
-            <button type="button" id="shareQr" class="share-icon icon-qr" aria-label="QRコードを表示"></button>
-          </div>
-          <div class="qr-wrapper" id="qrWrapper">
-            <p>このページのURLをQRコードで表示するエリアです。<br />（QR画像は後から差し込み予定）</p>
-          </div>
-        </section>
+<!-- ハンバーガーメニュー -->
+<nav id="sideMenu" class="side-menu">
+    <button class="close-btn" onclick="toggleMenu()">×</button>
+    <ul>
+        <li><a href="index.html">診断</a></li>
+        <li><a href="types.html">タイプ一覧</a></li>
+        <li><a href="compatibility.html">タイプ相性</a></li>
+        <li><a href="about.html">Affiniaとは</a></li>
+    </ul>
+</nav>
 
-        <!-- 広告枠 -->
-        <section class="ad-slot">
-          <p>ここに広告が入ります。</p>
-        </section>
-      </div>
+<main class="result-container">
+
+    <!-- タイトル -->
+    <section class="result-title">
+        <h2>あなたの Affinia タイプは…</h2>
     </section>
-  </main>
 
-  <!-- フッター -->
-  <footer class="site-footer">
-    <div class="inner footer-inner">
-      <div class="footer-brand">Affinia</div>
-      <div class="footer-links">
-        <a href="affinia.html">Affiniaとは</a>
-        <a href="types.html">Affiniaタイプ一覧</a>
-        <a href="relation.html">タイプ相性</a>
-        <a href="#">利用規約（準備中）</a>
-        <a href="#">プライバシー（準備中）</a>
-      </div>
-      <p class="copyright">© <span id="year"></span> Affinia</p>
+    <!-- キャラ画像 -->
+    <section class="result-visual">
+        <img id="type-image" src="" alt="タイプ画像">
+    </section>
+
+    <!-- タイプ名＋コード -->
+    <section class="result-main">
+        <h1 id="type-name"></h1>
+        <p id="type-code" class="type-code"></p>
+        <p id="type-catch" class="catchcopy"></p>
+        <p id="type-desc" class="typedesc"></p>
+    </section>
+
+    <!-- 相性サマリ -->
+    <section class="compat-summary">
+        <h3>このタイプの傾向</h3>
+        <ul id="compat-summary-list"></ul>
+    </section>
+
+    <!-- 広告枠 -->
+    <section class="ad-section">
+        <div class="ad-box">広告エリア（300×250）</div>
+    </section>
+
+    <!-- シェア -->
+    <section class="share-section">
+        <h3>シェアする</h3>
+        <div class="share-icons">
+            <a id="share-x" class="icon x">X</a>
+            <a id="share-line" class="icon line">LINE</a>
+            <a id="share-instagram" class="icon ig">Instagram</a>
+            <a id="share-qr" class="icon qr">QR</a>
+        </div>
+        <p class="share-count">4.9M+</p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div>
+        <a href="about.html">Affiniaとは</a>　
+        <a href="types.html">タイプ一覧</a>　
+        <a href="compatibility.html">タイプ相性</a>　
+        <a href="terms.html">利用規約</a>　
+        <a href="privacy.html">プライバシー</a>
     </div>
-  </footer>
+    <p>© 2025 Affinia</p>
+</footer>
 
-  <script src="app.js"></script>
+<script>
+/* メニュー開閉 */
+function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    menu.classList.toggle("open");
+}
+
+/* URL からコード取得 */
+function getParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+}
+
+/* 結果描画 */
+async function renderResult() {
+    const code = getParam("code");
+    if (!code) return;
+
+    const res = await fetch("types.json");
+    const types = await res.json();
+    const t = types.find(v => v.code === code);
+
+    if (!t) return;
+
+    // 画像
+    const imgPath = getTypeImagePath(t.name);
+    if (imgPath) {
+        document.getElementById("type-image").src = imgPath;
+    }
+
+    // テキスト
+    document.getElementById("type-name").textContent = t.name;
+    document.getElementById("type-code").textContent = "Affiniaコード: " + t.code;
+    document.getElementById("type-catch").textContent = t.catch;
+    document.getElementById("type-desc").textContent = t.desc;
+
+    // 相性サマリ
+    const list = document.getElementById("compat-summary-list");
+    t.summary.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = s;
+        list.appendChild(li);
+    });
+
+    // シェア
+    const shareUrl = location.href;
+    document.getElementById("share-x").href =
+        "https://twitter.com/share?url=" + encodeURIComponent(shareUrl);
+    document.getElementById("share-line").href =
+        "https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(shareUrl);
+}
+
+renderResult();
+</script>
+
 </body>
 </html>
