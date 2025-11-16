@@ -1,70 +1,235 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <title>Affiniaタイプ一覧｜Affinia</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Affiniaの16タイプ一覧ページ。AffiniaタイプとAffiniaコード、簡単な説明をまとめて確認できます。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Affiniaタイプ一覧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="type-images.js"></script>
+
+  <style>
+    .types-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .types-header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .types-header h1 {
+      font-size: 22px;
+      margin: 6px 0;
+    }
+
+    .types-header p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+
+    .type-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .type-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 10px 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .type-thumb img {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .type-meta {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .type-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .type-code-label {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .type-code {
+      font-size: 13px;
+      color: #c149c5;
+      font-weight: 700;
+    }
+
+    .type-name {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .type-desc {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .type-actions {
+      margin-top: 6px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .type-actions a {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #e0d0ea;
+      text-decoration: none;
+      color: #555;
+      background: #fff;
+    }
+
+    .type-actions a.primary {
+      background: #f48bbd;
+      border-color: #f48bbd;
+      color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .type-card {
+        padding: 10px;
+      }
+
+      .type-thumb img {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="inner header-inner">
-      <a href="index.html" class="logo">Affinia</a>
-      <nav class="nav pc-nav" aria-label="メインメニュー">
-        <a href="index.html#quiz-section">診断</a>
-        <a href="types.html">Affiniaタイプ一覧</a>
-        <a href="relation.html">タイプ相性</a>
-        <a href="affinia.html">Affiniaとは</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" type="button">
-        ☰
-      </button>
-    </div>
-  </header>
-  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
-    <button class="nav-close" id="navClose" type="button" aria-label="メニューを閉じる">×</button>
-    <nav aria-label="メインメニュー(モバイル)">
-      <a href="index.html#quiz-section">診断</a>
-      <a href="types.html">Affiniaタイプ一覧</a>
-      <a href="relation.html">タイプ相性</a>
-      <a href="affinia.html">Affiniaとは</a>
-    </nav>
-  </div>
-  <div class="nav-scrim" id="navScrim"></div>
 
-  <main class="site-main">
-    <section class="types-section">
-      <div class="inner">
-        <h1 class="section-title">Affiniaタイプ一覧</h1>
-        <p class="section-lead">
-          AffiniaタイプとAffiniaコードの一覧です。気になるタイプをタップすると、診断結果や相性ページに移動できます。
-        </p>
+<header class="header">
+  <div class="logo">Affinia</div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
 
-        <div class="type-grid" id="typeGrid">
-          <!-- JSでカードを描画 -->
-        </div>
-      </div>
+<nav id="sideMenu" class="side-menu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <ul>
+    <li><a href="index.html">診断トップ</a></li>
+    <li><a href="types.html">タイプ一覧</a></li>
+    <li><a href="compatibility.html">タイプ相性</a></li>
+    <li><a href="about.html">Affiniaとは</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="types-wrapper">
+    <section class="types-header">
+      <h1>Affinia タイプ一覧</h1>
+      <p>16のAffiniaタイプから、気になるタイプをチェックできます。</p>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="inner footer-inner">
-      <div class="footer-brand">Affinia</div>
-      <div class="footer-links">
-        <a href="affinia.html">Affiniaとは</a>
-        <a href="types.html">Affiniaタイプ一覧</a>
-        <a href="relation.html">タイプ相性</a>
-        <a href="#">利用規約（準備中）</a>
-        <a href="#">プライバシー（準備中）</a>
-      </div>
-      <p class="copyright">© <span id="year"></span> Affinia</p>
-    </div>
-  </footer>
+    <section>
+      <div id="type-list" class="type-list"></div>
+    </section>
+  </div>
+</main>
 
-  <script src="app.js"></script>
+<footer class="footer">
+  <div>
+    <a href="about.html">Affiniaとは</a>　
+    <a href="types.html">タイプ一覧</a>　
+    <a href="compatibility.html">タイプ相性</a>　
+    <a href="terms.html">利用規約</a>　
+    <a href="privacy.html">プライバシー</a>
+  </div>
+  <p>© 2025 Affinia</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    menu.classList.toggle("open");
+  }
+
+  // 仮: types データ
+  // 実際には別途 types.json などから取得してもOK
+  const AFFINIA_TYPES = [
+    { code: "A1", name: "ツンデレニャンコ", short: "素直になりきれない甘えんぼタイプ。" },
+    { code: "A2", name: "情熱ヒーロー", short: "前向きさと勢いで周りを巻き込むタイプ。" },
+    { code: "A3", name: "クールブレイン", short: "落ち着いて考えてから動く、知的クールタイプ。" },
+    { code: "A4", name: "ハッピーバニー", short: "場を明るくするムードメーカータイプ。" },
+    { code: "B1", name: "癒し天使", short: "人をほっとさせる空気をまとった優しさタイプ。" },
+    { code: "B2", name: "おちゃめキツネ", short: "ひらめきとノリで動く、おちゃめタイプ。" },
+    { code: "B3", name: "博識フクロウ", short: "知識欲が強く、じっくり学ぶタイプ。" },
+    { code: "B4", name: "ゴージャスプリンス", short: "自分なりの美学とこだわりを大事にするタイプ。" },
+    { code: "C1", name: "夢見るユニコーン", short: "理想やイメージを大事にするロマンチストタイプ。" },
+    { code: "C2", name: "頑張りミツバチ", short: "コツコツ努力して成果を出すタイプ。" },
+    { code: "C3", name: "もじもじヒツジ", short: "静かだけど、内側にしっかり世界を持っているタイプ。" },
+    { code: "C4", name: "ドジっ子リス", short: "ちょっと抜けてるけど、愛されキャラなタイプ。" },
+    { code: "D1", name: "パンクハリネズミ", short: "自分のペースとスタイルを貫きたいタイプ。" },
+    { code: "D2", name: "マイペースナマケモノ", short: "ゆったりしたペースで動きたい、マイペースタイプ。" },
+    { code: "D3", name: "健気ワンコ", short: "一度決めたらとことん、まっすぐ向き合うタイプ。" },
+    { code: "D4", name: "キラキラアイドル", short: "人前に立つと本領発揮する、きらめきタイプ。" }
+  ];
+
+  function initTypes() {
+    const listEl = document.getElementById("type-list");
+    listEl.innerHTML = "";
+
+    AFFINIA_TYPES.forEach(t => {
+      const imgPath = getTypeImagePath(t.name);
+      const card = document.createElement("article");
+      card.className = "type-card";
+
+      card.innerHTML = `
+        <div class="type-thumb">
+          ${imgPath ? `<img src="${imgPath}" alt="${t.name}">` : ""}
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-top">
+            <div>
+              <div class="type-name">${t.name}</div>
+            </div>
+            <div>
+              <div class="type-code-label">Affiniaコード</div>
+              <div class="type-code">${t.code}</div>
+            </div>
+          </div>
+          <p class="type-desc">${t.short}</p>
+          <div class="type-actions">
+            <a class="primary" href="result.html?code=${encodeURIComponent(t.code)}">このタイプの詳しい診断</a>
+          </div>
+        </div>
+      `;
+
+      listEl.appendChild(card);
+    });
+  }
+
+  initTypes();
+</script>
+
 </body>
 </html>
