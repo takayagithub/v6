@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Affinia タイプ相性</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="type-images.js"></script>
+
+  <style>
+    .compat-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .compat-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .compat-header h1 {
+      font-size: 22px;
+      margin: 6px 0;
+    }
+
+    .compat-header p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+
+    .compat-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 16px;
+    }
+
+    .compat-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .compat-form label {
+      font-size: 14px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .compat-form select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    .compat-button-row {
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .compat-button-row button {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #f48bbd;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .compat-button-row button:active {
+      transform: translateY(1px);
+    }
+
+    .compat-result-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 12px;
+    }
+
+    .compat-pair-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .compat-avatars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .compat-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .compat-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .compat-pair-text {
+      flex: 1;
+    }
+
+    .compat-pair-text .label {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .compat-pair-text .names {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .compat-pair-text .codes {
+      font-size: 12px;
+      color: #777;
+      margin-top: 2px;
+    }
+
+    .compat-body {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .compat-body p {
+      margin: 6px 0;
+    }
+
+    .compat-body ul {
+      padding-left: 18px;
+      margin: 6px 0;
+    }
+
+    .compat-note {
+      font-size: 12px;
+      color: #999;
+      margin-top: 8px;
+    }
+
+    .compat-empty {
+      font-size: 13px;
+      color: #777;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .compat-card {
+        padding: 16px 12px;
+      }
+
+      .compat-result-card {
+        padding: 16px 12px;
+      }
+
+      .compat-avatars {
+        gap: 2px;
+      }
+
+      .compat-avatar {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">Affinia</div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<nav id="sideMenu" class="side-menu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <ul>
+    <li><a href="index.html">診断トップ</a></li>
+    <li><a href="types.html">タイプ一覧</a></li>
+    <li><a href="compatibility.html">タイプ相性</a></li>
+    <li><a href="about.html">Affiniaとは</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="compat-wrapper">
+
+    <section class="compat-header">
+      <h1>Affinia タイプ相性</h1>
+      <p>自分と相手の Affinia タイプを選ぶと、関係のヒントが見られます。</p>
+    </section>
+
+    <!-- 選択フォーム -->
+    <section class="compat-card">
+      <div class="compat-form">
+        <div>
+          <label for="self-type">あなたの Affinia タイプ</label>
+          <select id="self-type">
+            <option value="">選択してください</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="other-type">相手の Affinia タイプ</label>
+          <select id="other-type">
+            <option value="">選択してください</option>
+          </select>
+        </div>
+
+        <div class="compat-button-row">
+          <button type="button" onclick="showCompatibility()">相性を見る</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結果枠 -->
+    <section id="compat-result-section" class="compat-result-card" style="display:none;">
+      <div class="compat-pair-head">
+        <div class="compat-avatars">
+          <div class="compat-avatar"><img id="self-img" src="" alt=""></div>
+          <span>×</span>
+          <div class="compat-avatar"><img id="other-img" src="" alt=""></div>
+        </div>
+        <div class="compat-pair-text">
+          <div class="label">選んだ組み合わせ</div>
+          <div class="names" id="pair-names"></div>
+          <div class="codes" id="pair-codes"></div>
+        </div>
+      </div>
+
+      <div class="compat-body">
+        <p id="compat-main-text"></p>
+        <ul id="compat-tips-list"></ul>
+        <p class="compat-note">
+          ※ 相性の詳しいパターンは、今後アップデートで少しずつ増えていきます。
+        </p>
+      </div>
+    </section>
+
+    <!-- まだ何も選ばれていないときの軽い案内 -->
+    <section id="compat-empty-section" class="compat-empty">
+      まずは「あなた」と「相手」の Affinia タイプを選んでみてください。
+    </section>
+
+    <!-- 広告枠 -->
+    <section class="ad-section">
+      <div class="ad-box">広告エリア（300×250）</div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <a href="about.html">Affiniaとは</a>　
+    <a href="types.html">タイプ一覧</a>　
+    <a href="compatibility.html">タイプ相性</a>　
+    <a href="terms.html">利用規約</a>　
+    <a href="privacy.html">プライバシー</a>
+  </div>
+  <p>© 2025 Affinia</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    menu.classList.toggle("open");
+  }
+
+  // Affinia タイプ一覧（types.html と同じ構成）
+  const AFFINIA_TYPES = [
+    { code: "A1", name: "ツンデレニャンコ" },
+    { code: "A2", name: "情熱ヒーロー" },
+    { code: "A3", name: "クールブレイン" },
+    { code: "A4", name: "ハッピーバニー" },
+    { code: "B1", name: "癒し天使" },
+    { code: "B2", name: "おちゃめキツネ" },
+    { code: "B3", name: "博識フクロウ" },
+    { code: "B4", name: "ゴージャスプリンス" },
+    { code: "C1", name: "夢見るユニコーン" },
+    { code: "C2", name: "頑張りミツバチ" },
+    { code: "C3", name: "もじもじヒツジ" },
+    { code: "C4", name: "ドジっ子リス" },
+    { code: "D1", name: "パンクハリネズミ" },
+    { code: "D2", name: "マイペースナマケモノ" },
+    { code: "D3", name: "健気ワンコ" },
+    { code: "D4", name: "キラキラアイドル" }
+  ];
+
+  // 相性データ（後で relations.json に逃がせるようにキーだけ設計しておく）
+  // 例: { "A1-A2": { main: "...", tips: ["...", "..."] }, ... }
+  let AFFINIA_RELATIONS = {};
+
+  async function loadRelations() {
+    try {
+      const res = await fetch("relations.json");
+      if (res.ok) {
+        AFFINIA_RELATIONS = await res.json();
+      }
+    } catch (e) {
+      // 無視して汎用メッセージで対応
+      AFFINIA_RELATIONS = {};
+    }
+  }
+
+  function findTypeByCode(code) {
+    return AFFINIA_TYPES.find(t => t.code === code) || null;
+  }
+
+  function populateSelects() {
+    const selfSel = document.getElementById("self-type");
+    const otherSel = document.getElementById("other-type");
+
+    AFFINIA_TYPES.forEach(t => {
+      const opt1 = document.createElement("option");
+      opt1.value = t.code;
+      opt1.textContent = `${t.code}：${t.name}`;
+      selfSel.appendChild(opt1);
+
+      const opt2 = document.createElement("option");
+      opt2.value = t.code;
+      opt2.textContent = `${t.code}：${t.name}`;
+      otherSel.appendChild(opt2);
+    });
+  }
+
+  function showCompatibility() {
+    const selfCode = document.getElementById("self-type").value;
+    const otherCode = document.getElementById("other-type").value;
+
+    const resultSection = document.getElementById("compat-result-section");
+    const emptySection = document.getElementById("compat-empty-section");
+
+    if (!selfCode || !otherCode) {
+      resultSection.style.display = "none";
+      emptySection.style.display = "block";
+      return;
+    }
+
+    const selfType = findTypeByCode(selfCode);
+    const otherType = findTypeByCode(otherCode);
+    if (!selfType || !otherType) {
+      resultSection.style.display = "none";
+      emptySection.style.display = "block";
+      return;
+    }
+
+    // 画像
+    const selfImgPath = getTypeImagePath(selfType.name);
+    const otherImgPath = getTypeImagePath(otherType.name);
+    if (selfImgPath) {
+      document.getElementById("self-img").src = selfImgPath;
+      document.getElementById("self-img").alt = selfType.name;
+    }
+    if (otherImgPath) {
+      document.getElementById("other-img").src = otherImgPath;
+      document.getElementById("other-img").alt = otherType.name;
+    }
+
+    // 見出し
+    document.getElementById("pair-names").textContent =
+      `${selfType.name} × ${otherType.name}`;
+    document.getElementById("pair-codes").textContent =
+      `Affiniaコード：${selfType.code} × ${otherType.code}`;
+
+    // 相性本文（データがあれば relations.json 優先）
+    const key1 = `${selfCode}-${otherCode}`;
+    const key2 = `${otherCode}-${selfCode}`;
+    const data = AFFINIA_RELATIONS[key1] || AFFINIA_RELATIONS[key2] || null;
+
+    const mainTextEl = document.getElementById("compat-main-text");
+    const tipsListEl = document.getElementById("compat-tips-list");
+    tipsListEl.innerHTML = "";
+
+    if (data && data.main) {
+      mainTextEl.textContent = data.main;
+      if (Array.isArray(data.tips)) {
+        data.tips.forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          tipsListEl.appendChild(li);
+        });
+      }
+    } else {
+      // 汎用の説明（準備中テキストではなく、軽いガイド）
+      mainTextEl.textContent =
+        "お互いの「らしさ」を認め合えると、じわじわ心地よくなっていく組み合わせです。";
+      const hints = [
+        "相手のペースや大事にしているポイントを、まず一度受け止めてみる。",
+        "自分の気持ちを一気に伝えすぎず、「今こう思ってるよ」と少しずつ共有する。",
+        "違いをジャッジするより、「役割のちがい」として眺めてみる。"
+      ];
+      hints.forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        tipsListEl.appendChild(li);
+      });
+    }
+
+    emptySection.style.display = "none";
+    resultSection.style.display = "block";
+  }
+
+  (async function init() {
+    populateSelects();
+    await loadRelations();
+  })();
+</script>
+
+</body>
+</html>
