@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Affiniaとは | Affinia - AIタイプ診断</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .about-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 18px 16px 32px;
+    }
+
+    .about-hero {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      margin-bottom: 18px;
+    }
+
+    .about-kicker {
+      font-size: 11px;
+      color: #c149c5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .about-hero h1 {
+      font-size: 22px;
+      margin: 4px 0 8px;
+    }
+
+    .about-hero p {
+      font-size: 14px;
+      color: #555;
+      margin: 0 0 8px;
+    }
+
+    .about-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .about-pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #fbe3f1;
+      color: #555;
+    }
+
+    .about-section {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      margin-bottom: 16px;
+    }
+
+    .about-section h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    .about-section p {
+      font-size: 14px;
+      color: #555;
+      margin: 0 0 8px;
+      line-height: 1.7;
+    }
+
+    .about-section ul {
+      padding-left: 20px;
+      margin: 4px 0 4px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .about-section li + li {
+      margin-top: 4px;
+    }
+
+    .promise-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 4px 0 0;
+    }
+
+    .promise-item {
+      padding-left: 0;
+      margin-bottom: 10px;
+    }
+
+    .promise-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 2px;
+      color: #333;
+    }
+
+    .promise-body {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* FAQ */
+    .faq-list {
+      margin: 6px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      border: 1px solid #f0d7ed;
+      background: #fff;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 10px 12px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-question-text {
+      flex: 1;
+      margin-right: 6px;
+    }
+
+    .faq-toggle {
+      font-size: 16px;
+      color: #c149c5;
+    }
+
+    .faq-answer {
+      font-size: 13px;
+      color: #555;
+      padding: 0 12px 10px;
+      display: none;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(90deg);
+    }
+
+    /* メッセージ */
+    .about-message-author {
+      font-size: 13px;
+      color: #777;
+      margin-top: 8px;
+      text-align: right;
+    }
+
+    /* CTA */
+    .about-cta {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .about-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .about-cta-buttons a {
+      font-size: 14px;
+      text-decoration: none;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid #e0d0ea;
+      background: #fff;
+      color: #555;
+    }
+
+    .about-cta-buttons a.primary {
+      background: #f48bbd;
+      border-color: #f48bbd;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      .about-wrapper {
+        padding: 16px 12px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">Affinia</div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<nav id="sideMenu" class="side-menu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <ul>
+    <li><a href="index.html">診断トップ</a></li>
+    <li><a href="types.html">タイプ一覧</a></li>
+    <li><a href="compatibility.html">タイプ相性</a></li>
+    <li><a href="about.html">Affiniaとは</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="about-wrapper">
+
+    <!-- ヒーロー -->
+    <section class="about-hero">
+      <div class="about-kicker">ABOUT</div>
+      <h1>Affiniaとは</h1>
+      <p>
+        Affinia（アフィニア）は、「性格そのもの」ではなく<br>
+        「いまの自分の状態や、動き方のくせ」をやさしく見える形にする<br>
+        AIタイプ診断サービスです。
+      </p>
+      <p>
+        16タイプのキャラクターを通じて、<br>
+        自分を責めるためではなく「ちょっと楽になるヒント」を届けることを目指しています。
+      </p>
+      <div class="about-pill-list">
+        <div class="about-pill">性格にとらわれすぎない</div>
+        <div class="about-pill">今の状態をやさしく可視化</div>
+        <div class="about-pill">診断より、その後の一歩</div>
+      </div>
+    </section>
+
+    <!-- Affiniaが大事にしていること -->
+    <section class="about-section">
+      <h2>Affiniaが大事にしていること</h2>
+      <p>
+        Affiniaは「当たっている・当たっていない」を競う診断ではありません。<br>
+        自分のことを少し客観的に見てみて、「こういう自分もありかも」と思えるきっかけをつくることを大切にしています。
+      </p>
+      <ul class="promise-list">
+        <li class="promise-item">
+          <div class="promise-title">1. ラベルを決めつけないこと</div>
+          <div class="promise-body">
+            「このタイプだから、あなたはこうです」と言い切らない設計にしています。<br>
+            あくまで「今のあなたに近い傾向」を示すだけで、人としての価値を決めるものではありません。
+          </div>
+        </li>
+        <li class="promise-item">
+          <div class="promise-title">2. 比べるより、自分のペースを尊重すること</div>
+          <div class="promise-body">
+            他の人と比べて落ち込むためではなく、「自分はこう動きやすいから、こう工夫してみよう」と考えられるように、言葉をできるだけやわらかく整えています。
+          </div>
+        </li>
+        <li class="promise-item">
+          <div class="promise-title">3. 今日から使える小さなヒントを入れること</div>
+          <div class="promise-body">
+            結果の説明には、「こうすると楽になりやすいかも」という<br>
+            小さな行動ヒントを入れる方針にしています。<br>
+            無理に自分を変えるのではなく、「今の自分を少し扱いやすくする」ためのヒントです。
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="about-section">
+      <h2>よくある質問</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">Q. この診断は性格を決めつけるものですか？</div>
+            <div class="faq-toggle">▶</div>
+          </div>
+          <div class="faq-answer">
+            いいえ、性格を固定するものではありません。<br>
+            Affiniaは「いまの自分の傾向」や「動き方のクセ」をふんわり言語化するためのツールです。<br>
+            日によって変わることもありますし、経験によって変化していく前提でつくられています。
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">Q. 占いとは違うのですか？</div>
+            <div class="faq-toggle">▶</div>
+          </div>
+          <div class="faq-answer">
+            占いのように「未来を当てる」ことは目的にしていません。<br>
+            質問への回答から、「こういう場面でこうなりやすいかも」という<br>
+            心理的なパターンをもとにタイプを表示しています。
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">Q. 16タイプはどのように決まっているのですか？</div>
+            <div class="faq-toggle">▶</div>
+          </div>
+          <div class="faq-answer">
+            Affiniaでは、行動の方向性や考え方のくせなど、いくつかの軸を組み合わせて<br>
+            独自の「Affiniaコード」として16タイプに整理しています。<br>
+            有名な性格分類をそのままコピーするのではなく、<br>
+            「自分らしさ」や「今の過ごし方」に目を向けやすい形に調整しています。
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">Q. 同じタイプでも人によって違いはありますか？</div>
+            <div class="faq-toggle">▶</div>
+          </div>
+          <div class="faq-answer">
+            もちろんあります。<br>
+            同じタイプでも、環境・経験・体調・年代などによって、出やすい行動や悩みは変わります。<br>
+            「全員がこう」というより、「こういう傾向を持ちやすいグループ」くらいの感覚で見てもらえるとちょうど良いです。
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">Q. 結果がしっくり来なかったときは？</div>
+            <div class="faq-toggle">▶</div>
+          </div>
+          <div class="faq-answer">
+            その場合は、「どこが違うと感じたか」を考えてみるのも一つの使い方です。<br>
+            しっくり来ないポイント自体が、「自分が大事にしていること」や<br>
+            「本当はこうありたい」と思っている部分を教えてくれることがあります。<br>
+            気になれば、少し時間をおいてから答え方を変えて試してみるのもおすすめです。
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 制作者メッセージ -->
+    <section class="about-section">
+      <h2>つくり手からのメッセージ</h2>
+      <p>
+        「診断」を受けたあとに、かえって自分のことが重く感じてしまうことがあります。<br>
+        ラベルが強すぎると、「こういう自分でいなきゃいけないのかな」と<br>
+        息苦しくなってしまうこともあります。
+      </p>
+      <p>
+        Affiniaは、そうではなくて、<br>
+        「いまの自分はこんな感じかもしれない」「それなら、こう動いてみようかな」と、<br>
+        すこしだけ気持ちが軽くなる場所であってほしいと思っています。
+      </p>
+      <p>
+        無理に前向きにならなくて大丈夫です。<br>
+        結果を見て、「この一文だけ、今日は心に残しておこうかな」と思えるところがあれば、<br>
+        それだけで十分だと考えています。
+      </p>
+      <p class="about-message-author">
+        Affinia 制作チーム
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-section about-cta">
+      <h2>診断をやってみる</h2>
+      <p>
+        気になったタイミングで、ふらっと診断してもらえたらうれしいです。
+      </p>
+      <div class="about-cta-buttons">
+        <a href="index.html" class="primary">Affiniaタイプ診断をはじめる</a>
+        <a href="types.html">16タイプ一覧を見る</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <a href="about.html">Affiniaとは</a>　
+    <a href="types.html">タイプ一覧</a>　
+    <a href="compatibility.html">タイプ相性</a>　
+    <a href="terms.html">利用規約</a>　
+    <a href="privacy.html">プライバシー</a>
+  </div>
+  <p>© 2025 Affinia</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    menu.classList.toggle("open");
+  }
+
+  // FAQ開閉
+  document.querySelectorAll(".faq-item").forEach(item => {
+    const q = item.querySelector(".faq-question");
+    q.addEventListener("click", () => {
+      item.classList.toggle("open");
+    });
+  });
+</script>
+
+</body>
+</html>
