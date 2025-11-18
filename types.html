@@ -2,127 +2,100 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Affiniaタイプ一覧</title>
+  <title>Affinia タイプ一覧 | Affinia - AIタイプ診断</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="style.css">
-  <script src="type-images.js"></script>
 
   <style>
     .types-wrapper {
-      max-width: 640px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 18px 16px 32px;
     }
 
-    .types-header {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-
-    .types-header h1 {
+    .types-title {
       font-size: 22px;
-      margin: 6px 0;
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-align: center;
     }
 
-    .types-header p {
-      font-size: 14px;
-      color: #666;
-      margin: 0;
+    .types-sub {
+      font-size: 13px;
+      text-align: center;
+      color: #777;
+      margin-bottom: 20px;
+      line-height: 1.7;
     }
 
-    .type-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 16px;
+    .type-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 520px) {
+      .type-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .type-card {
       background: #fff;
       border-radius: 16px;
-      padding: 10px 12px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      display: block;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .type-thumb img {
-      width: 64px;
-      height: 64px;
+    .type-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .type-img {
+      width: 100%;
+      max-width: 120px;
+      margin: 0 auto 8px;
       border-radius: 16px;
-      object-fit: cover;
-      background: #fff;
-    }
-
-    .type-meta {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .type-meta-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .type-code-label {
-      font-size: 11px;
-      color: #999;
     }
 
     .type-code {
       font-size: 13px;
-      color: #c149c5;
       font-weight: 700;
+      color: #c149c5;
+      margin-bottom: 2px;
     }
 
     .type-name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
+      margin-bottom: 4px;
     }
 
     .type-desc {
+      font-size: 12px;
+      color: #777;
+      line-height: 1.6;
+      min-height: 2.8em; /* 2行確保 */
+    }
+
+    .ad-box-bottom {
+      margin: 26px auto 0;
+      width: 300px;
+      height: 100px;
+      background: #f1e4f4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 13px;
       color: #666;
-    }
-
-    .type-actions {
-      margin-top: 6px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .type-actions a {
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid #e0d0ea;
-      text-decoration: none;
-      color: #555;
-      background: #fff;
-    }
-
-    .type-actions a.primary {
-      background: #f48bbd;
-      border-color: #f48bbd;
-      color: #fff;
-    }
-
-    @media (max-width: 480px) {
-      .type-card {
-        padding: 10px;
-      }
-
-      .type-thumb img {
-        width: 56px;
-        height: 56px;
-      }
     }
   </style>
 </head>
@@ -145,14 +118,19 @@
 
 <main>
   <div class="types-wrapper">
-    <section class="types-header">
-      <h1>Affinia タイプ一覧</h1>
-      <p>16のAffiniaタイプから、気になるタイプをチェックできます。</p>
-    </section>
 
-    <section>
-      <div id="type-list" class="type-list"></div>
-    </section>
+    <h1 class="types-title">Affinia タイプ一覧</h1>
+    <p class="types-sub">
+      全16タイプのキャラクターです。<br>
+      気になるタイプをタップすると詳細ページが開きます。
+    </p>
+
+    <div class="type-grid">
+      <!-- JSで自動生成 -->
+    </div>
+
+    <div class="ad-box-bottom">広告エリア（300×100）</div>
+
   </div>
 </main>
 
@@ -167,68 +145,53 @@
   <p>© 2025 Affinia</p>
 </footer>
 
+<script src="type-images.js"></script>
+
 <script>
   function toggleMenu() {
-    const menu = document.getElementById("sideMenu");
-    menu.classList.toggle("open");
+    document.getElementById("sideMenu").classList.toggle("open");
   }
 
-  // 仮: types データ
-  // 実際には別途 types.json などから取得してもOK
-  const AFFINIA_TYPES = [
-    { code: "A1", name: "ツンデレニャンコ", short: "素直になりきれない甘えんぼタイプ。" },
-    { code: "A2", name: "情熱ヒーロー", short: "前向きさと勢いで周りを巻き込むタイプ。" },
-    { code: "A3", name: "クールブレイン", short: "落ち着いて考えてから動く、知的クールタイプ。" },
-    { code: "A4", name: "ハッピーバニー", short: "場を明るくするムードメーカータイプ。" },
-    { code: "B1", name: "癒し天使", short: "人をほっとさせる空気をまとった優しさタイプ。" },
-    { code: "B2", name: "おちゃめキツネ", short: "ひらめきとノリで動く、おちゃめタイプ。" },
-    { code: "B3", name: "博識フクロウ", short: "知識欲が強く、じっくり学ぶタイプ。" },
-    { code: "B4", name: "ゴージャスプリンス", short: "自分なりの美学とこだわりを大事にするタイプ。" },
-    { code: "C1", name: "夢見るユニコーン", short: "理想やイメージを大事にするロマンチストタイプ。" },
-    { code: "C2", name: "頑張りミツバチ", short: "コツコツ努力して成果を出すタイプ。" },
-    { code: "C3", name: "もじもじヒツジ", short: "静かだけど、内側にしっかり世界を持っているタイプ。" },
-    { code: "C4", name: "ドジっ子リス", short: "ちょっと抜けてるけど、愛されキャラなタイプ。" },
-    { code: "D1", name: "パンクハリネズミ", short: "自分のペースとスタイルを貫きたいタイプ。" },
-    { code: "D2", name: "マイペースナマケモノ", short: "ゆったりしたペースで動きたい、マイペースタイプ。" },
-    { code: "D3", name: "健気ワンコ", short: "一度決めたらとことん、まっすぐ向き合うタイプ。" },
-    { code: "D4", name: "キラキラアイドル", short: "人前に立つと本領発揮する、きらめきタイプ。" }
+  const TYPES = [
+    { code: "A1", name: "ツンデレニャンコ", desc: "素直になりたい時ほど照れちゃうやつ。" },
+    { code: "A2", name: "情熱ヒーロー", desc: "まっすぐで熱い、勢いのある良い人。" },
+    { code: "A3", name: "クールブレイン", desc: "冷静で頭の回転が速いクリエイター気質。" },
+    { code: "A4", name: "ハッピーバニー", desc: "場の空気を明るくするムードメーカー。" },
+
+    { code: "B1", name: "癒し天使", desc: "周りをふわっと安心させるやわらかさ。" },
+    { code: "B2", name: "おちゃめキツネ", desc: "ひらめきで動く、遊び心のあるタイプ。" },
+    { code: "B3", name: "博識フクロウ", desc: "知識の海に住んでるタイプ。冷静で賢い。" },
+    { code: "B4", name: "ゴージャスプリンス", desc: "雰囲気に気品のある王子系ポジション。" },
+
+    { code: "C1", name: "夢見るユニコーン", desc: "空想と理想で走る夢追いタイプ。" },
+    { code: "C2", name: "頑張りミツバチ", desc: "ひたむきで努力家。影で支える名縁の下。" },
+    { code: "C3", name: "もじもじヒツジ", desc: "控えめだけど優しさの塊みたいな性格。" },
+    { code: "C4", name: "ドジっ子リス", desc: "ちょっと抜けてる愛され系ムーブ。" },
+
+    { code: "D1", name: "パンクハリネズミ", desc: "個性と主張を大切にする一点突破型。" },
+    { code: "D2", name: "マイペースナマケモノ", desc: "焦らず、自分の速度を守る賢いタイプ。" },
+    { code: "D3", name: "健気ワンコ", desc: "一生懸命さがチャームポイントの素直者。" },
+    { code: "D4", name: "キラキラアイドル", desc: "華やかで、周りを笑顔にする光の存在。" }
   ];
 
-  function initTypes() {
-    const listEl = document.getElementById("type-list");
-    listEl.innerHTML = "";
+  const grid = document.querySelector(".type-grid");
 
-    AFFINIA_TYPES.forEach(t => {
-      const imgPath = getTypeImagePath(t.name);
-      const card = document.createElement("article");
-      card.className = "type-card";
+  TYPES.forEach(t => {
+    const card = document.createElement("a");
+    card.className = "type-card";
+    card.href = `result.html?code=${t.code}`;
 
-      card.innerHTML = `
-        <div class="type-thumb">
-          ${imgPath ? `<img src="${imgPath}" alt="${t.name}">` : ""}
-        </div>
-        <div class="type-meta">
-          <div class="type-meta-top">
-            <div>
-              <div class="type-name">${t.name}</div>
-            </div>
-            <div>
-              <div class="type-code-label">Affiniaコード</div>
-              <div class="type-code">${t.code}</div>
-            </div>
-          </div>
-          <p class="type-desc">${t.short}</p>
-          <div class="type-actions">
-            <a class="primary" href="result.html?code=${encodeURIComponent(t.code)}">このタイプの詳しい診断</a>
-          </div>
-        </div>
-      `;
+    const imgPath = getTypeImagePath(t.name);
 
-      listEl.appendChild(card);
-    });
-  }
+    card.innerHTML = `
+      <img src="${imgPath}" alt="${t.name}" class="type-img">
+      <div class="type-code">${t.code}</div>
+      <div class="type-name">${t.name}</div>
+      <div class="type-desc">${t.desc}</div>
+    `;
 
-  initTypes();
+    grid.appendChild(card);
+  });
 </script>
 
 </body>
