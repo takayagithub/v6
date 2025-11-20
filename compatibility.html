@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* このページ専用。共通クラスは触らない */
+
     .compat-wrapper {
       max-width: 680px;
       margin: 0 auto;
@@ -237,11 +239,11 @@
       <div class="compat-kicker">TYPE MATCH</div>
       <h1>タイプ相性</h1>
       <p>
-        自分のAffiniaタイプと、気になる相手のタイプを選ぶと、<br>
+        自分のAffiniaタイプと、気になる相手のタイプをえらぶと、<br>
         関係の雰囲気や、付き合い方のヒントを見ることができます。
       </p>
       <p class="compat-hero-sub">
-        まずは診断でご自身のタイプをチェックしてから、相性を見るのがおすすめです。
+        友だち・家族・パートナー・職場の人など、だれとの相性を見てもOKです。
       </p>
     </section>
 
@@ -262,7 +264,7 @@
           </select>
         </div>
         <div class="compat-note">
-          ※ 友だち・家族・パートナー・職場の人など、相手はどなたでも大丈夫です。
+          ※ まだタイプが分からない場合は、先に診断を受けるのがおすすめです。
         </div>
 
         <div class="compat-actions">
@@ -291,22 +293,22 @@
       <div class="compat-section">
         <div class="compat-section-title">この組み合わせのざっくりイメージ</div>
         <p id="compatSummary" class="compat-section-body">
-          タイプ同士の違いを、「いい意味での役割分担」として見てあげると、関係が楽になりやすい組み合わせです。
+          タイプ同士の違いを、「いい意味での役割分担」として見てあげるほど、関係が楽になりやすい組み合わせです。
         </p>
       </div>
 
       <div class="compat-section">
         <div class="compat-section-title">心地よい距離感のつくり方</div>
         <p id="compatAdvice" class="compat-section-body">
-          相手に「自分と同じリアクション」や「同じペース」を求めすぎず、お互いの得意なテンポを尊重してあげると、関係が安定しやすくなります。
+          お互いの得意なペースを尊重しつつ、「ここだけは伝えておきたいこと」を短く共有しておくと、安心感のある関係をつくりやすくなります。
         </p>
       </div>
 
       <div class="compat-section">
         <div class="compat-section-title">すれちがいやすいポイント</div>
         <p id="compatCaution" class="compat-section-body">
-          どちらか一方だけが我慢し続けると、気づかないうちに距離があいてしまうことがあります。<br>
-          疲れているときは、「今日はちょっと余裕ないかも」と一言伝えておくと、お互いに安心しやすくなります。
+          どちらか一方だけが我慢しすぎると、気づかないうちに疲れがたまりがちです。<br>
+          「いまは少し余裕がない」など、正直な状態だけ共有しておくと、無用な誤解を減らせます。
         </p>
       </div>
     </section>
@@ -330,14 +332,13 @@
   <p>© 2025 Affinia</p>
 </footer>
 
-<script src="type-images.js"></script>
 <script>
   function toggleMenu() {
     const menu = document.getElementById("sideMenu");
     menu.classList.toggle("open");
   }
 
-  // Affiniaタイプ一覧（コード＋名前）
+  // タイプ一覧
   const AFFINIA_TYPES = [
     { code: "A1", name: "ツンデレニャンコ" },
     { code: "A2", name: "情熱ヒーロー" },
@@ -362,7 +363,6 @@
   const btnShow = document.getElementById("btnShowCompat");
   const resultCard = document.getElementById("compatResult");
 
-  // セレクト初期化
   function initSelects() {
     AFFINIA_TYPES.forEach(t => {
       const opt1 = document.createElement("option");
@@ -378,15 +378,12 @@
   }
 
   function updateButtonState() {
-    const myVal = mySelect.value;
-    const partnerVal = partnerSelect.value;
-    btnShow.disabled = !(myVal && partnerVal);
+    btnShow.disabled = !(mySelect.value && partnerSelect.value);
   }
 
   mySelect.addEventListener("change", updateButtonState);
   partnerSelect.addEventListener("change", updateButtonState);
 
-  // リセット
   function clearSelection() {
     mySelect.value = "";
     partnerSelect.value = "";
@@ -394,37 +391,28 @@
     resultCard.style.display = "none";
   }
 
-  // 相性表示
-  btnShow.addEventListener("click", () => {
-    const myCode = mySelect.value;
-    const partnerCode = partnerSelect.value;
-    if (!myCode || !partnerCode) return;
+  function applyDefaultTexts() {
+    document.getElementById("compatSummary").textContent =
+      "タイプ同士の違いを、「いい意味での役割分担」として見てあげるほど、関係が楽になりやすい組み合わせです。";
+    document.getElementById("compatAdvice").textContent =
+      "相手のペースや考え方を「自分とは少し違うだけ」ととらえて、一度受け止めてから自分の気持ちを伝えてみると、安心感のある関係をつくりやすくなります。";
+    document.getElementById("compatCaution").textContent =
+      "どちらか一方だけが我慢しすぎると、気づかないうちに距離があいてしまうことがあります。疲れているときは、「今日はちょっと余裕がないかも」と素直に伝えておくのがおすすめです。";
+  }
 
-    const myType = AFFINIA_TYPES.find(t => t.code === myCode);
-    const partnerType = AFFINIA_TYPES.find(t => t.code === partnerCode);
+  btnShow.addEventListener("click", () => {
+    if (!mySelect.value || !partnerSelect.value) return;
+
+    const myType = AFFINIA_TYPES.find(t => t.code === mySelect.value);
+    const partnerType = AFFINIA_TYPES.find(t => t.code === partnerSelect.value);
 
     document.getElementById("myTypeCodeLabel").textContent = myType.code;
     document.getElementById("myTypeNameLabel").textContent = myType.name;
     document.getElementById("partnerTypeCodeLabel").textContent = partnerType.code;
     document.getElementById("partnerTypeNameLabel").textContent = partnerType.name;
 
-    // 後から追加する詳細相性データ（別JS想定）
-    // 例: window.AFFINIA_COMPAT["A1-A2"] = { summary: "...", advice: "...", caution: "..." }
-    const pairKey = `${myCode}-${partnerCode}`;
-    if (window.AFFINIA_COMPAT && window.AFFINIA_COMPAT[pairKey]) {
-      const data = window.AFFINIA_COMPAT[pairKey];
-      document.getElementById("compatSummary").textContent = data.summary || "";
-      document.getElementById("compatAdvice").textContent = data.advice || "";
-      document.getElementById("compatCaution").textContent = data.caution || "";
-    } else {
-      // デフォルト文言（汎用）
-      document.getElementById("compatSummary").textContent =
-        "タイプ同士の違いを、「いい意味での役割分担」として受けとるほど、関係が楽になりやすい組み合わせです。";
-      document.getElementById("compatAdvice").textContent =
-        "相手のペースや考え方を「自分とは少し違うだけ」ととらえて、一度受け止めてから自分の気持ちを伝えてみると、安心感のある関係をつくりやすくなります。";
-      document.getElementById("compatCaution").textContent =
-        "どちらか一方だけが我慢しすぎると、気づかないうちに距離があいてしまうことがあります。疲れているときは、「今日はちょっと余裕がないかも」と素直に伝えておくのがおすすめです。";
-    }
+    // 将来ここで AFFINIA_COMPAT[pairKey] を見る
+    applyDefaultTexts();
 
     resultCard.style.display = "block";
     resultCard.scrollIntoView({ behavior: "smooth" });
