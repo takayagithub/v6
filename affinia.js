@@ -20,6 +20,7 @@ const AFFINIA_TYPES = {
   tsun_nyanko: {
     id: "tsun_nyanko",
     name: "ツンデレニャンコ",
+    imagePath: "/img/types/ツンデレニャンコ.png",
     labelShort: "素直になりきれない優しさの人",
     copy: "表向きはちょっとツンとして見えるけれど、内側はかなり情に厚いタイプ。相手との距離感を大事にしつつ、自分なりのやり方でちゃんと支える。頼られると弱い。",
     tagline: "「別に心配なんかしてないし」って言いながら一番気にしてる人。",
@@ -28,6 +29,7 @@ const AFFINIA_TYPES = {
   passion_hero: {
     id: "passion_hero",
     name: "情熱ヒーロー",
+    imagePath: "/img/types/情熱ヒーロー.png",
     labelShort: "ノリと熱量で進む行動派",
     copy: "考える前にまず一歩踏み出すエンジンタイプ。熱量があるからこそ人を巻き込み、空気を変えていく。ただし、やりたいことが多すぎて燃え尽き注意。",
     tagline: "動きながら考えるからこそ、見える景色がある。",
@@ -36,6 +38,7 @@ const AFFINIA_TYPES = {
   cool_brain: {
     id: "cool_brain",
     name: "クールブレイン",
+    imagePath: "/img/types/クールブレイン.png",
     labelShort: "一歩引いて全体を見る思考派",
     copy: "まずは情報を集めて整理してから動く慎重設計タイプ。感情に流されすぎない代わりに、心の揺れを外にはあまり出さない。冷静さの裏側にはちゃんと優しさがある。",
     tagline: "静かな場所で一番頼りにされがちな参謀ポジション。",
@@ -44,6 +47,7 @@ const AFFINIA_TYPES = {
   happy_bunny: {
     id: "happy_bunny",
     name: "ハッピーバニー",
+    imagePath: "/img/types/ハッピーバニー.png",
     labelShort: "場の空気をふわっと明るくする人",
     copy: "その場にいるだけでなんとなく空気がやわらかくなるムードメーカー。難しい話よりも、心地よさや楽しさを重視。ちょっと抜けてるところも含めて愛されキャラ。",
     tagline: "「とりあえず一緒に笑っとこ」が世界をちょっと平和にする。",
@@ -52,6 +56,7 @@ const AFFINIA_TYPES = {
   iyashi_angel: {
     id: "iyashi_angel",
     name: "癒し天使",
+    imagePath: "/img/types/癒し天使.png",
     labelShort: "そっと寄り添うケアの人",
     copy: "相手の小さな変化や違和感にすぐ気づく繊細センサー持ち。無理に励ますより、相手のペースに合わせてそばにいることを大事にする。自分のしんどさは後回しにしがち。",
     tagline: "「大丈夫？」の一言に、本気で心を込めるタイプ。",
@@ -60,6 +65,7 @@ const AFFINIA_TYPES = {
   playful_fox: {
     id: "playful_fox",
     name: "おちゃめキツネ",
+    imagePath: "/img/types/おちゃめキツネ.png",
     labelShort: "ひねりと遊び心のトリックスター",
     copy: "ちょっとひねった発想やイタズラ心で場を動かすアイデアマン。空気を読みつつ、あえて予想外なことをして笑いを取りにいくタイプ。真面目すぎる空間が苦手。",
     tagline: "退屈なルールには、少しだけイタズラを。",
@@ -68,6 +74,7 @@ const AFFINIA_TYPES = {
   wise_owl: {
     id: "wise_owl",
     name: "博識フクロウ",
+    imagePath: "/img/types/博識フクロウ.png",
     labelShort: "知識と分析で戦うインテリ枠",
     copy: "情報を集めて整理し、構造的に理解していくのが好きなタイプ。雑談より深いテーマが好きで、丁寧に説明してくれる先生ポジションになりがち。",
     tagline: "知識マニアだけど、ちゃんと人の役にも立てたい。",
@@ -76,6 +83,7 @@ const AFFINIA_TYPES = {
   gorgeous_princess: {
     id: "gorgeous_princess",
     name: "ゴージャスプリンセス",
+    imagePath: "/img/types/ゴージャスプリンセス.png",
     labelShort: "自分なりの美学を持つ主役気質",
     copy: "好きなものやこだわりがはっきりしていて、「どう見られるか」も含めてセルフプロデュースするタイプ。見た目だけじゃなく、内側の努力もちゃんと積み上げている。",
     tagline: "キラキラの裏で、誰にも見せない作業時間を積んでいる人。",
@@ -84,6 +92,7 @@ const AFFINIA_TYPES = {
   dream_unicorn: {
     id: "dream_unicorn",
     name: "夢見るユニコーン",
+    imagePath: "/img/types/夢見るユニコーン.png",
     labelShort: "理想と物語を大事にする人",
     copy: "現実の数字だけでは語れない「物語」や「意味」を探したくなるタイプ。ふとした妄想や空想から、新しいアイデアが生まれやすい。",
     tagline: "「だったら面白くない？」から世界を広げていく。",
@@ -92,6 +101,7 @@ const AFFINIA_TYPES = {
   hardworker_bee: {
     id: "hardworker_bee",
     name: "頑張りミツバチ",
+    imagePath: "/img/types/頑張りミツバチ.png",
     labelShort: "黙々コツコツ積み上げる努力家",
     copy: "任されたことをきっちりやり切りたい、責任感強めのタイプ。評価されるかどうかより、自分の中で「ちゃんとやった」と言えるかが大事。",
     tagline: "一気にじゃなくても、毎日の一歩でちゃんと進んでる。",
@@ -100,6 +110,7 @@ const AFFINIA_TYPES = {
   shy_sheep: {
     id: "shy_sheep",
     name: "もじもじヒツジ",
+    imagePath: "/img/types/もじもじヒツジ.png",
     labelShort: "静かだけど、ちゃんと見てる人",
     copy: "自分から前に出るのはちょっと苦手だけど、人の気持ちや空気をよく観察しているタイプ。慎重だからこそ、言葉を選んで話す。",
     tagline: "声は小さめでも、思考はちゃんと深い。",
@@ -108,6 +119,7 @@ const AFFINIA_TYPES = {
   clumsy_squirrel: {
     id: "clumsy_squirrel",
     name: "ドジっ子リス",
+    imagePath: "/img/types/ドジっ子リス.png",
     labelShort: "ちょっと抜けてる愛されポジ",
     copy: "忘れ物やミスも多いけれど、どこか憎めない空気をまとっているタイプ。完璧じゃないからこそ、人を安心させる不思議な存在。",
     tagline: "「またやっちゃった」が、場を少しだけ和ませている。",
@@ -116,6 +128,7 @@ const AFFINIA_TYPES = {
   punk_hedgehog: {
     id: "punk_hedgehog",
     name: "パンクハリネズミ",
+    imagePath: "/img/types/パンクハリネズミ.png",
     labelShort: "違和感に噛みつく反骨スピリット",
     copy: "みんながスルーしがちな「それおかしくない？」を見逃さないタイプ。表現はちょっとトゲトゲしてても、根っこには筋の通った正義感がある。",
     tagline: "とがってるようで、本当はかなり真面目。",
@@ -124,6 +137,7 @@ const AFFINIA_TYPES = {
   lazy_sloth: {
     id: "lazy_sloth",
     name: "マイペースナマケモノ",
+    imagePath: "/img/types/マイペースナマケモノ.png",
     labelShort: "自分のペースは死守したい",
     copy: "必要以上に急がず、できるだけエネルギー消費を少なく生きたいタイプ。サボりたいわけではなく、ムダを減らしたい効率厨でもある。",
     tagline: "ちゃんとやるところと、力を抜くところを見極めたい。",
@@ -132,6 +146,7 @@ const AFFINIA_TYPES = {
   loyal_dog: {
     id: "loyal_dog",
     name: "健気ワンコ",
+    imagePath: "/img/types/健気ワンコ.png",
     labelShort: "信じた人にはとことん尽くす",
     copy: "一度「この人」と決めた相手には、本気で尽くしてしまうタイプ。期待に応えたい気持ちが強くて、自分のことを後回しにしがち。",
     tagline: "不器用なくらい、まっすぐでいたい。",
@@ -140,6 +155,7 @@ const AFFINIA_TYPES = {
   glitter_idol: {
     id: "glitter_idol",
     name: "キラキラアイドル",
+    imagePath: "/img/types/キラキラアイドル.png",
     labelShort: "みんなの視線を集める発信者",
     copy: "人前に立つことや、発信することに抵抗が少ないタイプ。応援されることに喜びを感じる一方で、期待に応えなきゃとプレッシャーも抱えやすい。",
     tagline: "拍手の裏で、ちゃんと自分も守りたい。",
@@ -562,6 +578,9 @@ function initResultPage() {
 
   root.innerHTML = `
     <section class="card">
+      <div class="result-visual">
+        <img src="${type.imagePath}" alt="${type.name}" class="result-image">
+      </div>
       <div class="result-type-label">あなたの Affinia タイプ</div>
       <div class="result-type-name">${type.name}</div>
       <div class="result-copy">${type.copy}</div>
