@@ -2,314 +2,138 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Affinia - AIタイプ診断</title>
+  <title>Affinia｜AIタイプ診断 - 16タイプでわかる「今の自分」</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 共通スタイル -->
-  <link rel="stylesheet" href="style.css">
+  <!-- ===============================
+       基本SEOメタ
+  ================================ -->
+  <meta name="description" content="Affinia（アフィニア）のAIタイプ診断。9つの質問に答えるだけで、いまの自分に近い16タイプと、タイプごとの相性がわかります。">
+  <meta name="keywords" content="Affinia, アフィニア, 性格診断, AI診断, タイプ診断, 恋愛, 16タイプ">
+  <meta name="robots" content="index,follow">
 
-  <!-- OGタグのテンプレ（必要に応じて書き換え） -->
-  <meta property="og:title" content="Affinia - AIタイプ診断">
-  <meta property="og:description" content="性格にとらわれず、いまの自分を知るためのAIタイプ診断。たった1分で16タイプのAffiniaタイプをチェックできます。">
+  <!-- canonical URL
+       ※実ドメインに合わせて href を差し替えること -->
+  <link rel="canonical" href="https://affinia.example.com/">
+
+  <!-- ===============================
+       OGP / SNS用メタ
+       ※URLと画像パスは本番ドメインに合わせて変更
+  ================================ -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://affinia.example/">
-  <meta property="og:image" content="https://affinia.example/og-image.png">
+  <meta property="og:site_name" content="Affinia｜AIタイプ診断">
+  <meta property="og:title" content="Affinia｜AIタイプ診断 - 16タイプでわかる「今の自分」">
+  <meta property="og:description" content="9つの質問に答えるだけで、いまの自分に近い16タイプと、タイプごとの相性がわかります。ツンデレニャンコ、情熱ヒーロー、クールブレイン、ハッピーバニーなど、Affiniaの世界観キャラがあなたの今を言語化。">
+  <meta property="og:url" content="https://affinia.example.com/">
+  <meta property="og:image" content="https://affinia.example.com/img/ogp/affinia_default_1200x630.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Affinia｜AIタイプ診断 - 16タイプでわかる「今の自分」">
+  <meta name="twitter:description" content="9つの質問に答えるだけで、いまの自分に近い16タイプと、タイプごとの相性がわかります。">
+  <meta name="twitter:image" content="https://affinia.example.com/img/ogp/affinia_default_1200x630.png">
+
+  <!-- ===============================
+       アイコン類
+       ※実ファイル名に合わせて調整
+  ================================ -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/affinia-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icon/affinia-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/affinia-180.png">
+  <meta name="theme-color" content="#f7f0ff">
+
+  <!-- ===============================
+       構造化データ（JSON-LD）
+       Website + Organization の最低限セット
+  ================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Affinia｜AIタイプ診断",
+    "url": "https://affinia.example.com/",
+    "description": "AIが9つの質問から、いまの自分に近い16タイプとタイプ相性を診断するサイト。",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://affinia.example.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Affinia",
+      "url": "https://affinia.example.com/"
+    }
+  }
+  </script>
+
+  <!-- ===============================
+       共通スタイルシート
+  ================================ -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page page--index">
 
-<!-- ヘッダー（他ページと統一） -->
-<header class="header">
-  <div class="logo">Affinia</div>
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-</header>
-
-<nav id="sideMenu" class="side-menu">
-  <button class="close-btn" onclick="toggleMenu()">×</button>
-  <ul>
-    <li><a href="index.html">診断トップ</a></li>
-    <li><a href="types.html">タイプ一覧</a></li>
-    <li><a href="compatibility.html">タイプ相性</a></li>
-    <li><a href="about.html">Affiniaとは</a></li>
-  </ul>
-</nav>
-
-<main>
-  <div class="page-wrapper">
-
-    <!-- ヒーローカード -->
-    <section class="hero-card">
-      <div class="hero-kicker">AIタイプ診断</div>
-      <h1 class="hero-title">
-        性格にとらわれず、<br>
-        自分らしい今を。
-      </h1>
-      <p class="hero-text">
-        たった1分で、いまの自分に近い Affinia タイプをチェックできます。
-      </p>
-
-      <div class="hero-pill-row">
-        <span class="hero-pill">質問は全部で9問</span>
-        <span class="hero-pill">タップするだけで回答OK</span>
-        <span class="hero-pill">すぐにタイプまとめを表示</span>
+    <!-- ===============================
+         ヘッダー：ロゴ＋グローバルナビ
+    ================================ -->
+    <header class="header">
+      <div class="header-main">
+        <a href="index.html" class="logo-link" aria-label="Affinia トップへ">
+          <div class="logo">Affinia</div>
+        </a>
+        <div class="subtitle">AIタイプ診断</div>
       </div>
 
-      <div class="hero-buttons">
-        <a href="#inline-quiz" class="btn-primary">診断をはじめる</a>
-        <a href="about.html" class="btn-secondary">Affiniaとは</a>
+      <nav class="nav-links" aria-label="グローバルナビゲーション">
+        <a href="about.html" class="nav-link">Affiniaとは</a>
+        <a href="compatibility.html" class="nav-link">タイプ相性</a>
+      </nav>
+    </header>
+
+    <!-- ===============================
+         メインコンテンツ：診断エリア
+         中身は affinia.js が #quiz-root に動的挿入
+    ================================ -->
+    <main id="quiz-root">
+      <!--
+        JavaScriptが無効な場合のフォールバック。
+        実運用ではほとんど見られないが、
+        SEOとアクセシビリティを意識して最低限の内容を置いている。
+      -->
+      <section class="fallback">
+        <h1 class="fallback-title">Affinia AIタイプ診断</h1>
+        <p class="fallback-text">
+          このページはJavaScriptを使用しています。<br>
+          お使いのブラウザでJavaScriptを有効にしてから、もう一度アクセスしてください。
+        </p>
+      </section>
+    </main>
+
+    <!-- ===============================
+         フッター
+         広告や注意書きを追加する場合もここでOK
+    ================================ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <small class="footer-copy">
+          © Affinia AI Type Diagnosis
+        </small>
+        <!-- 利用規約やプライバシーポリシーを追加したくなったらここ -->
+        <!--
+        <div class="footer-links">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシーポリシー</a>
+        </div>
+        -->
       </div>
-
-      <p class="hero-note">
-        ※ 深呼吸するくらいの気持ちで、直感で選んでいただいて大丈夫です。
-      </p>
-    </section>
-
-    <!-- 広告エリア（横長） -->
-    <section class="ad-horizontal">
-      広告エリア（横長）
-    </section>
-
-    <!-- インライン診断カード -->
-    <section id="inline-quiz" class="inline-quiz-card">
-      <div class="inline-quiz-header">
-        <div class="inline-quiz-title">Affiniaタイプ診断</div>
-        <div class="inline-quiz-progress-row">
-          <span class="inline-quiz-progress-label">診断の進行度</span>
-          <span class="inline-quiz-progress-value" id="progressPercent">0% 完了</span>
-        </div>
-        <div class="inline-quiz-progress-bar">
-          <div id="progressBarInner" class="inline-quiz-progress-inner" style="width: 0%;"></div>
-        </div>
-        <p class="inline-quiz-caption">たった1分で完了します。</p>
-      </div>
-
-      <div class="inline-quiz-body">
-        <!-- 質問テキスト（2行分の高さを確保） -->
-        <div class="inline-quiz-question-wrap">
-          <p id="quizQuestion" class="inline-quiz-question">
-            予定のない休日、朝のスタートは？
-          </p>
-        </div>
-
-        <!-- 5段階の丸（左右大きく・真ん中小さめ） -->
-        <div class="inline-quiz-scale">
-          <button class="scale-circle scale-circle-large" data-value="1"></button>
-          <button class="scale-circle scale-circle-medium" data-value="2"></button>
-          <button class="scale-circle scale-circle-small" data-value="3"></button>
-          <button class="scale-circle scale-circle-medium" data-value="4"></button>
-          <button class="scale-circle scale-circle-large" data-value="5"></button>
-        </div>
-
-        <!-- 左右ラベル（3行分確保） -->
-        <div class="inline-quiz-label-row">
-          <div class="inline-quiz-label-left" id="quizLabelLeft">
-            ゆっくり整えてから動きたい
-          </div>
-          <div class="inline-quiz-label-right" id="quizLabelRight">
-            早めに外に出て動きたい
-          </div>
-        </div>
-
-        <!-- ボタン -->
-        <div class="inline-quiz-actions">
-          <button type="button" id="btnPrev" class="btn-secondary" disabled>戻る</button>
-          <button type="button" id="btnNext" class="btn-primary">次へ</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 下部広告エリア（縦長用） -->
-    <section class="ad-vertical">
-      広告エリア（縦長）
-    </section>
+    </footer>
 
   </div>
-</main>
 
-<footer class="footer">
-  <div>
-    <a href="about.html">Affiniaとは</a>　
-    <a href="types.html">Affiniaタイプ一覧</a>　
-    <a href="compatibility.html">タイプ相性</a>　
-    <a href="terms.html">利用規約（準備中）</a>　
-    <a href="privacy.html">プライバシー（準備中）</a>
-  </div>
-  <p>© 2025 Affinia</p>
-</footer>
-
-<script>
-  // ハンバーガーメニュー
-  function toggleMenu() {
-    const menu = document.getElementById("sideMenu");
-    menu.classList.toggle("open");
-  }
-
-  // ===== 診断ロジック（シンプル版） =====
-
-  // 9問 × 5段階。質問テキストと左右ラベルだけここで管理。
-  const AFFINIA_QUESTIONS = [
-    {
-      q: "予定のない休日、朝のスタートは？",
-      left: "ゆっくり整えてから動きたい",
-      right: "早めに外に出て動きたい"
-    },
-    {
-      q: "人との予定が入るときの気持ちは？",
-      left: "前もって心の準備をしたい",
-      right: "その場のノリでなんとかなると思う"
-    },
-    {
-      q: "新しいことを始めるときは？",
-      left: "情報を集めてから慎重に動く",
-      right: "まず試してみて、あとから考える"
-    },
-    {
-      q: "ちょっと疲れている日のコミュニケーションは？",
-      left: "少人数で深く話したい",
-      right: "ゆるくワイワイして気分転換したい"
-    },
-    {
-      q: "悩みごとがあるときは？",
-      left: "一人で考えて整理したい",
-      right: "誰かに話しながら考えたい"
-    },
-    {
-      q: "仕事や勉強の進め方は？",
-      left: "コツコツ積み上げるほうが落ち着く",
-      right: "波はあっても一気に集中したい"
-    },
-    {
-      q: "予定の変更が入るときは？",
-      left: "できれば事前に知っておきたい",
-      right: "直前でも、柔軟に合わせられるほう"
-    },
-    {
-      q: "ほめられたときのリアクションは？",
-      left: "照れて、うまく受け取れないことが多い",
-      right: "素直に「ありがとう」と言えるほうだ"
-    },
-    {
-      q: "今の自分に近いのは？",
-      left: "慎重だけど、じっくり考えるのは得意",
-      right: "勢いはあるけど、行動力はあるほう"
-    }
-  ];
-
-  const AFFINIA_TYPES = [
-    { code: "A1", name: "ツンデレニャンコ" },
-    { code: "A2", name: "情熱ヒーロー" },
-    { code: "A3", name: "クールブレイン" },
-    { code: "A4", name: "ハッピーバニー" },
-    { code: "B1", name: "癒し天使" },
-    { code: "B2", name: "おちゃめキツネ" },
-    { code: "B3", name: "博識フクロウ" },
-    { code: "B4", name: "ゴージャスプリンス" },
-    { code: "C1", name: "夢見るユニコーン" },
-    { code: "C2", name: "頑張りミツバチ" },
-    { code: "C3", name: "もじもじヒツジ" },
-    { code: "C4", name: "ドジっ子リス" },
-    { code: "D1", name: "パンクハリネズミ" },
-    { code: "D2", name: "マイペースナマケモノ" },
-    { code: "D3", name: "健気ワンコ" },
-    { code: "D4", name: "キラキラアイドル" }
-  ];
-
-  let currentIndex = 0;
-  const answers = new Array(AFFINIA_QUESTIONS.length).fill(null);
-
-  const questionEl = document.getElementById("quizQuestion");
-  const labelLeftEl = document.getElementById("quizLabelLeft");
-  const labelRightEl = document.getElementById("quizLabelRight");
-  const circles = document.querySelectorAll(".scale-circle");
-  const btnPrev = document.getElementById("btnPrev");
-  const btnNext = document.getElementById("btnNext");
-  const progressBarInner = document.getElementById("progressBarInner");
-  const progressPercent = document.getElementById("progressPercent");
-
-  function renderQuestion() {
-    const q = AFFINIA_QUESTIONS[currentIndex];
-    questionEl.textContent = q.q;
-    labelLeftEl.textContent = q.left;
-    labelRightEl.textContent = q.right;
-
-    circles.forEach((c, idx) => {
-      const value = idx + 1;
-      c.classList.toggle("selected", answers[currentIndex] === value);
-    });
-
-    // 戻るボタンの状態
-    btnPrev.disabled = currentIndex === 0;
-
-    // 次へ / 結果を見る の表示
-    if (currentIndex === AFFINIA_QUESTIONS.length - 1) {
-      btnNext.textContent = "結果を見る";
-    } else {
-      btnNext.textContent = "次へ";
-    }
-
-    updateProgress();
-  }
-
-  function updateProgress() {
-    const answeredCount = answers.filter(v => v !== null).length;
-    const ratio = answeredCount / AFFINIA_QUESTIONS.length;
-    const percent = Math.round(ratio * 100);
-    progressBarInner.style.width = percent + "%";
-    progressPercent.textContent = percent + "% 完了";
-  }
-
-  // 丸をタップしたとき
-  circles.forEach((c, idx) => {
-    const value = idx + 1;
-    c.addEventListener("click", () => {
-      answers[currentIndex] = value;
-      renderQuestion();
-    });
-  });
-
-  btnPrev.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      renderQuestion();
-    }
-  });
-
-  btnNext.addEventListener("click", () => {
-    // まだ選んでないときはスキップしない
-    if (answers[currentIndex] === null) {
-      // 何も選んでないときは軽くバイブする程度のUXでもいいけど、ここでは何もしない
-      return;
-    }
-
-    if (currentIndex < AFFINIA_QUESTIONS.length - 1) {
-      currentIndex++;
-      renderQuestion();
-    } else {
-      // 結果へ
-      finishQuiz();
-    }
-  });
-
-  function finishQuiz() {
-    const total = answers.reduce((sum, v) => sum + (v || 0), 0); // 9〜45
-    const max = AFFINIA_QUESTIONS.length * 5; // 45
-    const ratio = total / max;                // 0〜1
-
-    // 0〜1 → 0〜15 にマッピング
-    let index = Math.floor(ratio * AFFINIA_TYPES.length);
-    if (index >= AFFINIA_TYPES.length) index = AFFINIA_TYPES.length - 1;
-    if (index < 0) index = 0;
-
-    const type = AFFINIA_TYPES[index];
-
-    // 結果コードを一応保存しておく
-    sessionStorage.setItem("affinia_result_code", type.code);
-    // 結果ページへ
-    window.location.href = "result.html?code=" + encodeURIComponent(type.code);
-  }
-
-  // 初期表示
-  renderQuestion();
-</script>
-
+  <!-- ===============================
+       診断ロジック・タイプ定義・相性定義などをまとめたスクリプト
+       index / result / compatibility / about から共通で読み込む
+  ================================ -->
+  <script src="affinia.js"></script>
 </body>
 </html>
