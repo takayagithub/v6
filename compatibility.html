@@ -2,180 +2,212 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Affinia タイプ相性</title>
+  <title>タイプ相性 | Affinia - AIタイプ診断</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="style.css">
-  <script src="type-images.js"></script>
 
   <style>
     .compat-wrapper {
-      max-width: 640px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 18px 16px 32px;
     }
 
-    .compat-header {
-      text-align: center;
-      margin-bottom: 20px;
+    .compat-hero {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      margin-bottom: 18px;
     }
 
-    .compat-header h1 {
+    .compat-kicker {
+      font-size: 11px;
+      color: #c149c5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .compat-hero h1 {
       font-size: 22px;
-      margin: 6px 0;
+      margin: 4px 0 8px;
     }
 
-    .compat-header p {
+    .compat-hero p {
       font-size: 14px;
-      color: #666;
-      margin: 0;
+      color: #555;
+      margin: 0 0 6px;
+      line-height: 1.7;
+    }
+
+    .compat-hero-sub {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
     }
 
     .compat-card {
       background: #fff;
       border-radius: 18px;
-      padding: 18px 16px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 18px 18px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
       margin-bottom: 16px;
     }
 
+    .compat-card h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
     .compat-form {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
 
-    .compat-form label {
-      font-size: 14px;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    .compat-form select {
-      width: 100%;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      font-size: 14px;
-    }
-
-    .compat-button-row {
-      margin-top: 8px;
-      text-align: center;
-    }
-
-    .compat-button-row button {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      background: #f48bbd;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .compat-button-row button:active {
-      transform: translateY(1px);
-    }
-
-    .compat-result-card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 18px 16px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-      margin-top: 12px;
-    }
-
-    .compat-pair-head {
+    .compat-field {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .compat-avatars {
-      display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 4px;
+      font-size: 13px;
     }
 
-    .compat-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .compat-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .compat-pair-text {
-      flex: 1;
-    }
-
-    .compat-pair-text .label {
-      font-size: 11px;
-      color: #999;
-    }
-
-    .compat-pair-text .names {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .compat-pair-text .codes {
-      font-size: 12px;
-      color: #777;
-      margin-top: 2px;
-    }
-
-    .compat-body {
-      font-size: 14px;
+    .compat-label {
+      font-weight: 600;
       color: #444;
     }
 
-    .compat-body p {
-      margin: 6px 0;
-    }
-
-    .compat-body ul {
-      padding-left: 18px;
-      margin: 6px 0;
+    .compat-select {
+      border-radius: 999px;
+      border: 1px solid #e0d0ea;
+      padding: 8px 12px;
+      font-size: 14px;
+      background: #fff;
     }
 
     .compat-note {
       font-size: 12px;
-      color: #999;
-      margin-top: 8px;
+      color: #888;
+      margin-top: 4px;
     }
 
-    .compat-empty {
+    .compat-actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid #e0d0ea;
+      background: #fff;
+      padding: 8px 14px;
       font-size: 13px;
-      color: #777;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: 1px solid #f48bbd;
+      background: #f48bbd;
+      padding: 8px 18px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    /* 結果表示カード */
+    .compat-result-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      margin-top: 16px;
+      display: none;
+    }
+
+    .compat-result-title {
+      font-size: 17px;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    .compat-pair {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .compat-pill {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 1px solid #e0d0ea;
+      background: #fdf5fc;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .compat-pill-code {
+      font-weight: 700;
+      color: #c149c5;
+    }
+
+    .compat-pill-name {
+      font-weight: 600;
+      color: #444;
+    }
+
+    .compat-pair-arrow {
+      font-size: 16px;
+      color: #999;
+    }
+
+    .compat-section-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      color: #444;
+    }
+
+    .compat-section-body {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .ad-box-bottom {
+      margin: 24px auto 0;
+      width: 300px;
+      height: 250px;
+      background: #f1e4f4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #666;
       text-align: center;
-      margin-top: 10px;
     }
 
     @media (max-width: 480px) {
-      .compat-card {
-        padding: 16px 12px;
-      }
-
-      .compat-result-card {
-        padding: 16px 12px;
-      }
-
-      .compat-avatars {
-        gap: 2px;
-      }
-
-      .compat-avatar {
-        width: 40px;
-        height: 40px;
+      .compat-wrapper {
+        padding: 16px 12px 28px;
       }
     }
   </style>
@@ -200,67 +232,89 @@
 <main>
   <div class="compat-wrapper">
 
-    <section class="compat-header">
-      <h1>Affinia タイプ相性</h1>
-      <p>自分と相手の Affinia タイプを選ぶと、関係のヒントが見られます。</p>
+    <!-- ヒーロー -->
+    <section class="compat-hero">
+      <div class="compat-kicker">TYPE MATCH</div>
+      <h1>タイプ相性</h1>
+      <p>
+        自分のAffiniaタイプと、気になる相手のタイプを選ぶと、<br>
+        関係の雰囲気や、付き合い方のヒントを見ることができます。
+      </p>
+      <p class="compat-hero-sub">
+        まずは診断でご自身のタイプをチェックしてから、相性を見るのがおすすめです。
+      </p>
     </section>
 
     <!-- 選択フォーム -->
     <section class="compat-card">
+      <h2>タイプをえらぶ</h2>
       <div class="compat-form">
-        <div>
-          <label for="self-type">あなたの Affinia タイプ</label>
-          <select id="self-type">
+        <div class="compat-field">
+          <div class="compat-label">自分のAffiniaタイプ</div>
+          <select id="myTypeSelect" class="compat-select">
             <option value="">選択してください</option>
           </select>
         </div>
-
-        <div>
-          <label for="other-type">相手の Affinia タイプ</label>
-          <select id="other-type">
+        <div class="compat-field">
+          <div class="compat-label">相手のAffiniaタイプ</div>
+          <select id="partnerTypeSelect" class="compat-select">
             <option value="">選択してください</option>
           </select>
         </div>
+        <div class="compat-note">
+          ※ 友だち・家族・パートナー・職場の人など、相手はどなたでも大丈夫です。
+        </div>
 
-        <div class="compat-button-row">
-          <button type="button" onclick="showCompatibility()">相性を見る</button>
+        <div class="compat-actions">
+          <button type="button" class="btn-ghost" onclick="clearSelection()">リセット</button>
+          <button type="button" id="btnShowCompat" class="btn-primary" disabled>相性を見る</button>
         </div>
       </div>
     </section>
 
-    <!-- 結果枠 -->
-    <section id="compat-result-section" class="compat-result-card" style="display:none;">
-      <div class="compat-pair-head">
-        <div class="compat-avatars">
-          <div class="compat-avatar"><img id="self-img" src="" alt=""></div>
-          <span>×</span>
-          <div class="compat-avatar"><img id="other-img" src="" alt=""></div>
+    <!-- 相性結果 -->
+    <section id="compatResult" class="compat-result-card">
+      <h2 class="compat-result-title">ふたりの関係性のヒント</h2>
+
+      <div class="compat-pair">
+        <div class="compat-pill">
+          <span class="compat-pill-code" id="myTypeCodeLabel">A1</span>
+          <span class="compat-pill-name" id="myTypeNameLabel">ツンデレニャンコ</span>
         </div>
-        <div class="compat-pair-text">
-          <div class="label">選んだ組み合わせ</div>
-          <div class="names" id="pair-names"></div>
-          <div class="codes" id="pair-codes"></div>
+        <span class="compat-pair-arrow">×</span>
+        <div class="compat-pill">
+          <span class="compat-pill-code" id="partnerTypeCodeLabel">B2</span>
+          <span class="compat-pill-name" id="partnerTypeNameLabel">おちゃめキツネ</span>
         </div>
       </div>
 
-      <div class="compat-body">
-        <p id="compat-main-text"></p>
-        <ul id="compat-tips-list"></ul>
-        <p class="compat-note">
-          ※ 相性の詳しいパターンは、今後アップデートで少しずつ増えていきます。
+      <div class="compat-section">
+        <div class="compat-section-title">この組み合わせのざっくりイメージ</div>
+        <p id="compatSummary" class="compat-section-body">
+          タイプ同士の違いを、「いい意味での役割分担」として見てあげると、関係が楽になりやすい組み合わせです。
+        </p>
+      </div>
+
+      <div class="compat-section">
+        <div class="compat-section-title">心地よい距離感のつくり方</div>
+        <p id="compatAdvice" class="compat-section-body">
+          相手に「自分と同じリアクション」や「同じペース」を求めすぎず、お互いの得意なテンポを尊重してあげると、関係が安定しやすくなります。
+        </p>
+      </div>
+
+      <div class="compat-section">
+        <div class="compat-section-title">すれちがいやすいポイント</div>
+        <p id="compatCaution" class="compat-section-body">
+          どちらか一方だけが我慢し続けると、気づかないうちに距離があいてしまうことがあります。<br>
+          疲れているときは、「今日はちょっと余裕ないかも」と一言伝えておくと、お互いに安心しやすくなります。
         </p>
       </div>
     </section>
 
-    <!-- まだ何も選ばれていないときの軽い案内 -->
-    <section id="compat-empty-section" class="compat-empty">
-      まずは「あなた」と「相手」の Affinia タイプを選んでみてください。
-    </section>
-
-    <!-- 広告枠 -->
-    <section class="ad-section">
-      <div class="ad-box">広告エリア（300×250）</div>
-    </section>
+    <!-- 広告 -->
+    <div class="ad-box-bottom">
+      広告エリア（タイプ相性ページ下部）
+    </div>
 
   </div>
 </main>
@@ -276,13 +330,14 @@
   <p>© 2025 Affinia</p>
 </footer>
 
+<script src="type-images.js"></script>
 <script>
   function toggleMenu() {
     const menu = document.getElementById("sideMenu");
     menu.classList.toggle("open");
   }
 
-  // Affinia タイプ一覧（types.html と同じ構成）
+  // Affiniaタイプ一覧（コード＋名前）
   const AFFINIA_TYPES = [
     { code: "A1", name: "ツンデレニャンコ" },
     { code: "A2", name: "情熱ヒーロー" },
@@ -302,124 +357,80 @@
     { code: "D4", name: "キラキラアイドル" }
   ];
 
-  // 相性データ（後で relations.json に逃がせるようにキーだけ設計しておく）
-  // 例: { "A1-A2": { main: "...", tips: ["...", "..."] }, ... }
-  let AFFINIA_RELATIONS = {};
+  const mySelect = document.getElementById("myTypeSelect");
+  const partnerSelect = document.getElementById("partnerTypeSelect");
+  const btnShow = document.getElementById("btnShowCompat");
+  const resultCard = document.getElementById("compatResult");
 
-  async function loadRelations() {
-    try {
-      const res = await fetch("relations.json");
-      if (res.ok) {
-        AFFINIA_RELATIONS = await res.json();
-      }
-    } catch (e) {
-      // 無視して汎用メッセージで対応
-      AFFINIA_RELATIONS = {};
-    }
-  }
-
-  function findTypeByCode(code) {
-    return AFFINIA_TYPES.find(t => t.code === code) || null;
-  }
-
-  function populateSelects() {
-    const selfSel = document.getElementById("self-type");
-    const otherSel = document.getElementById("other-type");
-
+  // セレクト初期化
+  function initSelects() {
     AFFINIA_TYPES.forEach(t => {
       const opt1 = document.createElement("option");
       opt1.value = t.code;
       opt1.textContent = `${t.code}：${t.name}`;
-      selfSel.appendChild(opt1);
+      mySelect.appendChild(opt1);
 
       const opt2 = document.createElement("option");
       opt2.value = t.code;
       opt2.textContent = `${t.code}：${t.name}`;
-      otherSel.appendChild(opt2);
+      partnerSelect.appendChild(opt2);
     });
   }
 
-  function showCompatibility() {
-    const selfCode = document.getElementById("self-type").value;
-    const otherCode = document.getElementById("other-type").value;
-
-    const resultSection = document.getElementById("compat-result-section");
-    const emptySection = document.getElementById("compat-empty-section");
-
-    if (!selfCode || !otherCode) {
-      resultSection.style.display = "none";
-      emptySection.style.display = "block";
-      return;
-    }
-
-    const selfType = findTypeByCode(selfCode);
-    const otherType = findTypeByCode(otherCode);
-    if (!selfType || !otherType) {
-      resultSection.style.display = "none";
-      emptySection.style.display = "block";
-      return;
-    }
-
-    // 画像
-    const selfImgPath = getTypeImagePath(selfType.name);
-    const otherImgPath = getTypeImagePath(otherType.name);
-    if (selfImgPath) {
-      document.getElementById("self-img").src = selfImgPath;
-      document.getElementById("self-img").alt = selfType.name;
-    }
-    if (otherImgPath) {
-      document.getElementById("other-img").src = otherImgPath;
-      document.getElementById("other-img").alt = otherType.name;
-    }
-
-    // 見出し
-    document.getElementById("pair-names").textContent =
-      `${selfType.name} × ${otherType.name}`;
-    document.getElementById("pair-codes").textContent =
-      `Affiniaコード：${selfType.code} × ${otherType.code}`;
-
-    // 相性本文（データがあれば relations.json 優先）
-    const key1 = `${selfCode}-${otherCode}`;
-    const key2 = `${otherCode}-${selfCode}`;
-    const data = AFFINIA_RELATIONS[key1] || AFFINIA_RELATIONS[key2] || null;
-
-    const mainTextEl = document.getElementById("compat-main-text");
-    const tipsListEl = document.getElementById("compat-tips-list");
-    tipsListEl.innerHTML = "";
-
-    if (data && data.main) {
-      mainTextEl.textContent = data.main;
-      if (Array.isArray(data.tips)) {
-        data.tips.forEach(t => {
-          const li = document.createElement("li");
-          li.textContent = t;
-          tipsListEl.appendChild(li);
-        });
-      }
-    } else {
-      // 汎用の説明（準備中テキストではなく、軽いガイド）
-      mainTextEl.textContent =
-        "お互いの「らしさ」を認め合えると、じわじわ心地よくなっていく組み合わせです。";
-      const hints = [
-        "相手のペースや大事にしているポイントを、まず一度受け止めてみる。",
-        "自分の気持ちを一気に伝えすぎず、「今こう思ってるよ」と少しずつ共有する。",
-        "違いをジャッジするより、「役割のちがい」として眺めてみる。"
-      ];
-      hints.forEach(t => {
-        const li = document.createElement("li");
-        li.textContent = t;
-        tipsListEl.appendChild(li);
-      });
-    }
-
-    emptySection.style.display = "none";
-    resultSection.style.display = "block";
+  function updateButtonState() {
+    const myVal = mySelect.value;
+    const partnerVal = partnerSelect.value;
+    btnShow.disabled = !(myVal && partnerVal);
   }
 
-  (async function init() {
-    populateSelects();
-    await loadRelations();
-  })();
+  mySelect.addEventListener("change", updateButtonState);
+  partnerSelect.addEventListener("change", updateButtonState);
+
+  // リセット
+  function clearSelection() {
+    mySelect.value = "";
+    partnerSelect.value = "";
+    updateButtonState();
+    resultCard.style.display = "none";
+  }
+
+  // 相性表示
+  btnShow.addEventListener("click", () => {
+    const myCode = mySelect.value;
+    const partnerCode = partnerSelect.value;
+    if (!myCode || !partnerCode) return;
+
+    const myType = AFFINIA_TYPES.find(t => t.code === myCode);
+    const partnerType = AFFINIA_TYPES.find(t => t.code === partnerCode);
+
+    document.getElementById("myTypeCodeLabel").textContent = myType.code;
+    document.getElementById("myTypeNameLabel").textContent = myType.name;
+    document.getElementById("partnerTypeCodeLabel").textContent = partnerType.code;
+    document.getElementById("partnerTypeNameLabel").textContent = partnerType.name;
+
+    // 後から追加する詳細相性データ（別JS想定）
+    // 例: window.AFFINIA_COMPAT["A1-A2"] = { summary: "...", advice: "...", caution: "..." }
+    const pairKey = `${myCode}-${partnerCode}`;
+    if (window.AFFINIA_COMPAT && window.AFFINIA_COMPAT[pairKey]) {
+      const data = window.AFFINIA_COMPAT[pairKey];
+      document.getElementById("compatSummary").textContent = data.summary || "";
+      document.getElementById("compatAdvice").textContent = data.advice || "";
+      document.getElementById("compatCaution").textContent = data.caution || "";
+    } else {
+      // デフォルト文言（汎用）
+      document.getElementById("compatSummary").textContent =
+        "タイプ同士の違いを、「いい意味での役割分担」として受けとるほど、関係が楽になりやすい組み合わせです。";
+      document.getElementById("compatAdvice").textContent =
+        "相手のペースや考え方を「自分とは少し違うだけ」ととらえて、一度受け止めてから自分の気持ちを伝えてみると、安心感のある関係をつくりやすくなります。";
+      document.getElementById("compatCaution").textContent =
+        "どちらか一方だけが我慢しすぎると、気づかないうちに距離があいてしまうことがあります。疲れているときは、「今日はちょっと余裕がないかも」と素直に伝えておくのがおすすめです。";
+    }
+
+    resultCard.style.display = "block";
+    resultCard.scrollIntoView({ behavior: "smooth" });
+  });
+
+  initSelects();
 </script>
 
 </body>
